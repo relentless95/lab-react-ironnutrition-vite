@@ -4,6 +4,12 @@ import { Card, Col, Button } from "antd";
 
 function FoodBox(props) {
   const { name, image, calories, servings } = props.food;
+
+  const handleDeleteClick =()=>{
+    props.handleDelete(name);
+  }
+
+
   return (
     <Col>
       <Card title={name} style={{ width: 230, height: 300, margin: 10 }}>
@@ -14,7 +20,7 @@ function FoodBox(props) {
         <p>
           <b>Total Calories: {calories * servings}</b> kcal
         </p>
-        <Button type="primary"> Delete </Button>
+        <Button type="primary" onClick={handleDeleteClick}> Delete </Button>
       </Card>
     </Col>
   );

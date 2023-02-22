@@ -12,9 +12,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [toDelete, deleteItem]=useState("");
 
-  const handleDelete=(event)=>{
-    deleteItem(event.filter(food=>food.name !== food.name))
-  }
+  const handleDelete=(name)=>{
+    const updatedFoodlist = foodList.filter((food) =>food.name !== name);
+    setFoodList(updatedFoodlist);
+  };
 
   return (
     <div className="App">
@@ -45,7 +46,7 @@ function App() {
             }
           })
           .map((food) => {
-            return <FoodBox food={food} />;
+            return <FoodBox food={food} handleDelete={handleDelete} />;
           })}
       </Row>
     </div>
